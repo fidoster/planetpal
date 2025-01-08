@@ -8,7 +8,7 @@
   <style>
   body {
     background: linear-gradient(to bottom, #d4ecd4, #a8db9e); /* Light green gradient */
-    color: #333; /* Adjust text color for contrast */
+    color: #333; /* Text color for contrast */
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -23,27 +23,43 @@
   header {
     text-align: center;
     padding: 20px;
-    background-color: #4caf50; /* Nature-inspired green */
+    background-color: #4caf50; /* Green header */
     color: white;
     border-radius: 10px;
   }
 
-  .persona-selector button {
-    background-color: #f0fff0; /* Light pastel green for buttons */
-    border: 1px solid #d4ecd4;
-    border-radius: 10px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+  .logo-container {
+    background-color: white; /* Reset background around logo */
+    border-radius: 10px; /* Add rounded corners for a softer look */
+    padding: 10px;
+    display: inline-block; /* Ensure it wraps tightly around the logo */
   }
 
-  .persona-selector button:hover {
-    background-color: #a8db9e; /* Slightly darker green on hover */
-    transform: scale(1.05);
+  .persona-selector button {
+    background-color: transparent; /* Reset green background on persona buttons */
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .persona-button img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* Circular icons */
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 2px solid transparent; /* Ensure no square border */
+  }
+
+  .persona-button img.selected {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 255, 0.5);
   }
 
   #chat-container textarea {
-    background-color: #f0fff0; /* Soft green for input */
-    border: 1px solid #d4ecd4;
-    border-radius: 10px;
+    background-color: #ffffff; /* White background for input box */
+    border: 1px solid #d4ecd4; /* Soft green border for input box */
+    border-radius: 10px; /* Rounded edges for consistency */
     padding: 10px;
     width: 100%;
     box-sizing: border-box;
@@ -67,14 +83,14 @@
   .chat-history {
     margin-top: 20px;
     padding: 20px;
-    background-color: #e8f5e9; /* Soft green background for chat history */
+    background-color: #ffffff; /* White for better readability */
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   .chat-history li {
     background-color: #ffffff; /* White for better contrast */
-    border: 1px solid #d4ecd4;
+    border: 1px solid #d4ecd4; /* Soft green border for subtle styling */
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
