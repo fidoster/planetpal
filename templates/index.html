@@ -3,125 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Persona Chatbot</title>
+  <title>PlanetPal - Eco-friendly AI companion!</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
   <style>
-    .slider-container {
-      margin-top: 10px;
-      text-align: center;
-    }
+  body {
+    background: linear-gradient(to bottom, #d4ecd4, #a8db9e); /* Light green gradient */
+    color: #333; /* Adjust text color for contrast */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
 
-    #level-slider {
-      width: 90%;
-      margin: 10px auto;
-    }
+  .app-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
 
-    .slider-label {
-      margin-top: 5px;
-      font-size: 1rem;
-      font-weight: bold;
-    }
+  header {
+    text-align: center;
+    padding: 20px;
+    background-color: #4caf50; /* Nature-inspired green */
+    color: white;
+    border-radius: 10px;
+  }
 
-    .persona-selector {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin: 20px 0;
-    }
+  .persona-selector button {
+    background-color: #f0fff0; /* Light pastel green for buttons */
+    border: 1px solid #d4ecd4;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
 
-    .persona-button {
-      border: none;
-      background: none;
-      cursor: pointer;
-      text-align: center;
-    }
+  .persona-selector button:hover {
+    background-color: #a8db9e; /* Slightly darker green on hover */
+    transform: scale(1.05);
+  }
 
-    .persona-button img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
+  #chat-container textarea {
+    background-color: #f0fff0; /* Soft green for input */
+    border: 1px solid #d4ecd4;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1rem;
+  }
 
-    .persona-button img.selected {
-      transform: scale(1.1);
-      box-shadow: 0px 4px 10px rgba(0, 0, 255, 0.5);
-    }
+  #chat-container button {
+    background-color: #4caf50; /* Green send button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
 
-    .chat-history ul {
-      list-style-type: none;
-      padding: 0;
-    }
+  #chat-container button:hover {
+    background-color: #388e3c; /* Darker green on hover */
+  }
 
-    .chat-history li {
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      padding: 10px;
-      margin-bottom: 10px;
-      background-color: #f9f9f9;
-      position: relative;
-    }
+  .chat-history {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #e8f5e9; /* Soft green background for chat history */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
 
-    .message-actions {
-      display: flex;
-      justify-content: flex-end;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .copy-btn, .delete-btn {
-      padding: 5px 15px;
-      font-size: 0.9rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-    }
-
-    .copy-btn {
-      background-color: #28a745;
-      color: white;
-    }
-
-    .delete-btn {
-      background-color: #dc3545;
-      color: white;
-    }
-
-    .copy-btn:hover {
-      background-color: #218838;
-    }
-
-    .delete-btn:hover {
-      background-color: #c82333;
-    }
-
-    #send-button {
-      width: 120px;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.2s ease, transform 0.2s ease;
-      margin-top: 15px;
-    }
-
-    #send-button:hover {
-      background-color: #0056b3;
-      transform: scale(1.05);
-    }
-
-    .response {
-      white-space: pre-wrap; /* Ensures proper wrapping for long lines */
-      font-family: "Courier New", monospace;
-      font-size: 1rem;
-      margin-top: 10px;
-    }
-  </style>
+  .chat-history li {
+    background-color: #ffffff; /* White for better contrast */
+    border: 1px solid #d4ecd4;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+</style>
 </head>
 <body>
   <div class="app-container">
