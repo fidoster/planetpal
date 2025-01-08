@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Persona Chatbot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <style>
+    .slider-container {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    #level-slider {
+      width: 90%;
+      margin: 10px auto;
+    }
+
+    .slider-label {
+      margin-top: 5px;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .persona-selector {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .persona-button {
+      border: none;
+      background: none;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .persona-button img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .persona-button img.selected {
+      transform: scale(1.1);
+      box-shadow: 0px 4px 10px rgba(0, 0, 255, 0.5);
+    }
+
+    .chat-history ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .chat-history li {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #f9f9f9;
+      position: relative;
+    }
+
+    .message-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .copy-btn, .delete-btn {
+      padding: 5px 15px;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .copy-btn {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .delete-btn {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .copy-btn:hover {
+      background-color: #218838;
+    }
+
+    .delete-btn:hover {
+      background-color: #c82333;
+    }
+
+    #send-button {
+      width: 120px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+      margin-top: 15px;
+    }
+
+    #send-button:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    .response {
+      white-space: pre-wrap; /* Ensures proper wrapping for long lines */
+      font-family: "Courier New", monospace;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <div class="logo-container">
+        <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Persona Chatbot Logo" class="logo">
+      </div>
+      <p>Select a persona, adjust their cleverness level, and ask your question!</p>
+    </header>
+    <div id="persona-selector" class="persona-selector">
+      <!-- Prompt Expert Persona -->
+      <button class="persona-button" id="prompt-expert" onclick="selectPersona('Prompt Expert')">
+        <img src="{{ url_for('static', filename='assets/personas/Prompt.webp') }}" alt="Prompt Expert">
+        <p>Prompt Expert</p>
+      </button>
+
+      <!-- Painter Persona -->
+      <button class="persona-button" id="painter" onclick="selectPersona('Painter')">
+        <img src="{{ url_for('static', filename='assets/personas/Painter.webp') }}" alt="Painter">
+        <p>Painter</p>
+      </button>
+
+      <!-- Poet Persona -->
+      <button class="persona-button" id="poet" onclick="selectPersona('Poet')">
+        <img src="{{ url_for('static', filename='assets/personas/Poet.webp') }}" alt="Poet">
+        <p>Poet</p>
+      </button>
+
+      <!-- Teacher Persona -->
+      <button class="persona-button" id="teacher" onclick="selectPersona('Teacher')">
+        <img src="{{ url_for('static', filename='assets/personas/Teacher.webp') }}" alt="Teacher">
+        <p>Teacher</p>
+      </button>
+
+      <!-- Helpful Persona -->
+      <button class="persona-button" id="helpful" onclick="selectPersona('Helpful')">
+        <img src="{{ url_for('static', filename='assets/personas/Helpful.webp') }}" alt="Helpful">
+        <p>Helpful</p>
+      </button>
+
+      <!-- Funny Persona -->
+      <button class="persona-button" id="funny" onclick="selectPersona('Funny')">
+        <img src="{{ url_for('static', filename='assets/personas/Funny.webp') }}" alt="Funny">
+        <p>Funny</p>
+      </button>
+
+      <!-- Sarcastic Persona -->
+      <button class="persona-button" id="sarcastic" onclick="selectPersona('Sarcastic')">
+        <img src="{{ url_for('static', filename='assets/personas/Sarcastic.webp') }}" alt="Sarcastic">
+        <p>Sarcastic</p>
+      </button>
+
+      <!-- Wise Persona -->
+      <button class="persona-button" id="wise" onclick="selectPersona('Wise')">
+        <img src="{{ url_for('static', filename='assets/personas/Wise.webp') }}" alt="Wise">
+        <p>Wise</p>
+      </button>
+
+      <!-- Motivational Persona -->
+      <button class="persona-button" id="motivational" onclick="selectPersona('Motivational')">
+        <img src="{{ url_for('static', filename='assets/personas/Motivational.webp') }}" alt="Motivational">
+        <p>Motivational</p>
+      </button>
+
+      <!-- Evaluator Persona -->
+      <button class="persona-button" id="evaluator" onclick="selectPersona('Evaluator')">
+        <img src="{{ url_for('static', filename='assets/personas/Evaluator.webp') }}" alt="Evaluator">
+        <p>Evaluator</p>
+      </button>
+    </div>
+
+    <div class="slider-container">
+      <label for="level-slider" class="slider-label">Cleverness Level: <span id="slider-value">3</span></label>
+      <input type="range" id="level-slider" min="1" max="5" value="3">
+    </div>
+
+    <div id="chat-container" class="chat-section">
+      <textarea id="question-input" placeholder="Prompt Expert is ready to assist..."></textarea>
+      <button id="send-button" class="send-button">Send</button>
+    </div>
+
+    <div id="chat-history" class="chat-history">
+      <h3>Chat History</h3>
+      <ul id="history-list"></ul>
+    </div>
+  </div>
+
+  <script>
+    let selectedPersona = 'Prompt Expert';
+    let clevernessLevel = 3;
+
+    function selectPersona(persona) {
+      selectedPersona = persona;
+      const questionInput = document.getElementById('question-input');
+      questionInput.placeholder = `${persona} is ready to assist...`;
+
+      const buttons = document.querySelectorAll('.persona-button img');
+      buttons.forEach(img => img.classList.remove('selected'));
+      document.querySelector(`#${persona.toLowerCase().replace(/ /g, '-')}`).querySelector('img').classList.add('selected');
+    }
+
+    const slider = document.getElementById('level-slider');
+    const sliderValue = document.getElementById('slider-value');
+    slider.addEventListener('input', function () {
+      clevernessLevel = parseInt(slider.value, 10);
+      sliderValue.textContent = clevernessLevel;
+    });
+
+    document.getElementById('send-button').addEventListener('click', async () => {
+      const questionInput = document.getElementById('question-input');
+      const question = questionInput.value.trim();
+      if (!question) return alert('Please enter a question.');
+
+      try {
+        const response = await fetch('/ask', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            question,
+            persona: selectedPersona,
+            level: clevernessLevel
+          })
+        });
+        const data = await response.json();
+        if (data.error) throw new Error(data.error);
+
+        const historyList = document.getElementById('history-list');
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+          <p><strong>${selectedPersona}:</strong> ${question}</p>
+          <pre class="response">${data.answer}</pre>
+          <div class="message-actions">
+            <button class="copy-btn" onclick="copyMessage(this)">Copy</button>
+            <button class="delete-btn" onclick="deleteMessage(this)">Delete</button>
+          </div>
+        `;
+        historyList.prepend(listItem);
+        questionInput.value = '';
+      } catch (error) {
+        alert('Failed to get a response. Please try again.');
+      }
+    });
+
+    function copyMessage(button) {
+      const message = button.closest('li').querySelector('.response').textContent;
+      navigator.clipboard.writeText(message).then(() => {
+        alert('Message copied to clipboard!');
+      });
+    }
+
+    function deleteMessage(button) {
+      const messageItem = button.closest('li');
+      messageItem.remove();
+    }
+  </script>
+</body>
+</html>
