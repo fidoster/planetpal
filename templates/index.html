@@ -21,22 +21,31 @@
   }
 
   header {
-    text-align: center;
-    padding: 20px;
-    background-color: #4caf50; /* Green header */
-    color: white;
-    border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+  background-color: transparent; /* Transparent background */
+  color: #333; /* Dark text for contrast */
+  border-radius: 10px;
+  box-shadow: none; /* Remove shadow */
   }
 
+
   .logo-container {
-    background-color: white; /* Reset background around logo */
-    border-radius: 10px; /* Add rounded corners for a softer look */
-    padding: 10px;
-    display: inline-block; /* Ensure it wraps tightly around the logo */
+    background-color: transparent; /* No background around logo */
+    padding: 0; /* Remove unnecessary padding */
+    display: inline-block; /* Wrap tightly around the logo */
+    border: none; /* No border */
+  }
+
+  .logo {
+    border: none; /* Remove any border */
+    box-shadow: none; /* No shadow around the logo */
+    border-radius: 0; /* Keep natural shape */
+    max-width: 100%; /* Ensure responsiveness */
   }
 
   .persona-selector button {
-    background-color: transparent; /* Reset green background on persona buttons */
+    background-color: transparent; /* Remove background color */
     border: none;
     cursor: pointer;
     text-align: center;
@@ -46,19 +55,20 @@
   .persona-button img {
     width: 80px;
     height: 80px;
-    border-radius: 50%; /* Circular icons */
+    border-radius: 50%; /* Ensure circular icons */
     transition: transform 0.2s, box-shadow 0.2s;
-    border: 2px solid transparent; /* Ensure no square border */
+    border: 2px solid transparent; /* No border around images */
+    box-shadow: none; /* Remove shadow around persona icons */
   }
 
   .persona-button img.selected {
-    transform: scale(1.1);
-    box-shadow: 0px 4px 10px rgba(0, 0, 255, 0.5);
+    transform: scale(1.1); /* Add slight zoom effect for selection */
+    box-shadow: 0px 4px 10px rgba(0, 0, 255, 0.5); /* Highlight selected persona */
   }
 
   #chat-container textarea {
-    background-color: #ffffff; /* White background for input box */
-    border: 1px solid #d4ecd4; /* Soft green border for input box */
+    background-color: #f0fff0; /* Soft green for input box */
+    border: 1px solid #d4ecd4; /* Light green border for subtle styling */
     border-radius: 10px; /* Rounded edges for consistency */
     padding: 10px;
     width: 100%;
@@ -74,28 +84,47 @@
     padding: 10px 20px;
     font-size: 1rem;
     cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
   }
 
   #chat-container button:hover {
     background-color: #388e3c; /* Darker green on hover */
+    transform: scale(1.05); /* Slight zoom effect */
   }
 
   .chat-history {
     margin-top: 20px;
     padding: 20px;
-    background-color: #ffffff; /* White for better readability */
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #e8f5e9; /* Soft green background for chat history */
+    border-radius: 10px; /* Rounded edges for consistency */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   }
 
   .chat-history li {
-    background-color: #ffffff; /* White for better contrast */
-    border: 1px solid #d4ecd4; /* Soft green border for subtle styling */
+    background-color: #f9fff9; /* Soft green for better readability */
+    border: 1px solid #d4ecd4; /* Subtle green border */
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
   }
+
+  .slider-container {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  #level-slider {
+    width: 90%;
+    margin: 10px auto;
+  }
+
+  .slider-label {
+    margin-top: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+  }
 </style>
+
 </head>
 <body>
   <div class="app-container">
