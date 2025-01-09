@@ -6,12 +6,12 @@
 }
 
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #eaf4e3;
-  color: #2f4f2f;
-  line-height: 1.6;
-  font-size: 16px;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #eaf4e3;
+    color: #2f4f2f;
+    line-height: 1.6;
+    font-size: 16px;
 }
 
 /* Main App Container */
@@ -31,25 +31,54 @@ header {
   margin-bottom: 30px;
 }
 
-header .logo-container {
-  width: 250px;
-  margin: 0 auto;
+
+.logo-container {
+    width: 250px;
+    margin: 0 auto;
 }
 
-header .logo {
-  width: 250px;
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-  object-fit: contain;
+.logo {
+    width: 250px;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: -85px;
+    object-fit: contain;
 }
-
-header p {
-  color: #3a633a;
-  font-size: 1rem;
-  margin: 0;
+/* This is the new header styling */
+.header-text {
+    color: #3a633a;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 1.2rem; /* Current font size */
+    font-family: 'Lora', serif; /* Current font */
 }
-
+/* New styles for planetpal and tagline  */
+.planetpal-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 2.8rem;
+    color: #1e321e;   /* Default text color kept for fallback */
+    margin: 0 auto;
+    text-align: center;
+    margin-top: -5px;
+    margin-left: 5px;
+    letter-spacing: 2px;
+    background: linear-gradient(to right, #2f4f2f, #003300); /* Darker green gradient */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+}
+.planetpal-tagline{
+    font-family: 'Libre Baskerville', serif; /* Use Libre Baskerville for a high-quality feel */
+    font-style: italic; /* Make the text italic */
+    font-size: 1.15rem; /* Adjust size */
+    color: #3a633a;
+    margin: 0 auto;
+    text-align: center;
+    letter-spacing: 0.5px;
+    margin-top: 0px;
+}
 /* Persona Selector */
 .persona-selector {
   display: flex;
@@ -104,7 +133,7 @@ header p {
   border: 1px solid #8dc891;
   border-radius: 10px;
   background-color: #ffffff;
-  margin-bottom: 20px;
+    margin-top: 20px; /* add the distance here */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -229,6 +258,77 @@ button.send-button:focus {
 .chat-history button:hover {
   opacity: 0.9;
 }
+
+/* Change range slider track color */
+#level-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 90%;
+  height: 12px;
+    margin: 20px auto;
+    background: linear-gradient(to left, #4caf50, #ddd); /*Reversed gradient*/
+    outline: none;
+    border: 1px solid #8dc891;
+    border-radius: 15px;
+    transition: background 0.2s;
+}
+
+#level-slider:focus {
+        background: linear-gradient(to left, #4caf50, #ddd); /*Reversed gradient*/
+}
+
+#level-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #4caf50; /* Green thumb */
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+#level-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #4caf50; /* Green thumb */
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+#level-slider::-webkit-slider-runnable-track {
+    background: transparent;
+    border-radius: 15px;
+}
+#level-slider::-moz-range-track {
+    background: transparent;
+    border-radius: 15px;
+}
+
+#level-slider::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+#level-slider::-ms-thumb {
+    width: 20px;
+    height: 20px;
+    background: #4caf50;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+#level-slider::-ms-fill-lower {
+        background: linear-gradient(to left, #4caf50, #ddd);  /*Green background on left*/
+    border-radius: 15px;
+}
+#level-slider::-ms-fill-upper {
+    background: transparent;
+    border-radius: 15px;
+}
+
 
 /* Responsive: smaller screens */
 @media (max-width: 600px) {
