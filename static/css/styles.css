@@ -1,210 +1,247 @@
-/* General Styles */
+/* Global Resets and Defaults */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #eaf4e3; /* Light sustainable green */
-  color: #2f4f2f; /* Darker earthy green for text */
-  line-height: 1.6; /* Increased line spacing */
+  background-color: #eaf4e3;
+  color: #2f4f2f;
+  line-height: 1.6;
+  font-size: 16px;
 }
 
-/* App Container */
+/* Main App Container */
 .app-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   min-height: 100vh;
-  box-sizing: border-box;
+  max-width: 1200px;
+  margin: auto;
 }
 
 /* Header */
-
 header {
   text-align: center;
   margin-bottom: 30px;
 }
 
+header .logo-container {
+  width: 250px;
+  margin: 0 auto;
+}
+
 header .logo {
-  width: 250px; /* Fixed width */
-  max-width: 100%; /* Ensure it doesn't exceed container */
-  height: auto; /* Maintain aspect ratio */
-  margin-bottom: 10px; /* Add some spacing below the logo */
-  object-fit: contain; /* Ensure it looks clean */
+  width: 250px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  object-fit: contain;
 }
 
 header p {
-  color: #3a633a; /* Earthy green */
+  color: #3a633a;
   font-size: 1rem;
   margin: 0;
 }
 
-.logo-container {
-  width: 250px; /* Set the maximum width of the logo container */
-  margin: 0 auto; /* Center the logo */
-}
-
-/* Persona Selector Section */
+/* Persona Selector */
 .persona-selector {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
   margin-bottom: 30px;
-  flex-wrap: wrap;
+}
+
+.persona-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.persona-button:focus,
+.persona-button:active {
+  outline: none;
+  box-shadow: none;
+  background-color: transparent;
 }
 
 .persona-button img {
   width: 80px;
   height: 80px;
-  border-radius: 50%; /* Ensure circular icons */
+  border-radius: 50%;
+  border: 2px solid transparent;
+  box-shadow: none;
   transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-  border: 2px solid transparent; /* No border around images */
-  box-shadow: none; /* Remove shadow around persona icons */
 }
 
 .persona-button img:hover {
-  border: 3px solid #4caf50; /* Add green border on hover */
-  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.5); /* Add shadow on hover */
-  transform: scale(1.1); /* Slight zoom effect */
-}
-
-
-.persona-button img:hover {
+  border: 3px solid #4caf50;
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.5);
   transform: scale(1.1);
 }
 
 .persona-button img.selected {
-  border: 4px solid #4caf50; /* Vibrant green for selected persona */
-  box-shadow: 0 0 10px rgba(76, 175, 80, 0.5); /* Glow effect */
+  border: 3px solid #4caf50;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
+  transform: scale(1.1);
 }
 
-/* Chat Section */
+/* Chat Section (Text Box + Send Button) */
 .chat-section {
+  width: 100%;
+  max-width: 800px;
   padding: 20px;
-  border: 1px solid #8dc891; /* Soft green border */
+  border: 1px solid #8dc891;
   border-radius: 10px;
   background-color: #ffffff;
   margin-bottom: 20px;
-  width: 100%;
-  max-width: 800px; /* Wider text box */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
 }
 
-textarea {
+.chat-section textarea {
   width: 100%;
-  height: 140px; /* Slightly taller */
+  height: 140px;
   padding: 15px;
   font-size: 16px;
-  border: 1px solid #8dc891; /* Soft green border */
+  border: 1px solid #8dc891;
   border-radius: 5px;
+  background-color: #f2f7f1;
   margin-bottom: 15px;
-  background-color: #f2f7f1; /* Light greenish white */
-  box-sizing: border-box;
+}
+
+.chat-section textarea:focus {
+  outline: 2px solid #4caf50;
 }
 
 button.send-button {
+  display: block;
+  margin: 0 auto;
   padding: 10px 25px;
-  background-color: #4caf50; /* Vibrant green */
+  font-size: 16px;
+  background-color: #4caf50;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  display: block;
-  margin: 0 auto;
-  font-size: 16px;
 }
 
 button.send-button:hover {
-  background-color: #388e3c; /* Darker green on hover */
+  background-color: #388e3c;
+  transform: scale(1.05);
 }
 
-/* Error Message */
-.error-message {
-  color: #c62828; /* Red for errors */
-  margin-top: 15px;
-  font-weight: bold;
+button.send-button:focus {
+  outline: 2px solid #4caf50;
+  outline-offset: 2px;
 }
 
-/* Chat Answer */
-.chat-answer {
-  margin-top: 20px;
-  padding: 15px;
-  border: 1px solid #8dc891; /* Soft green border */
-  border-radius: 5px;
-  background-color: #ffffff;
-  width: 100%;
-  max-width: 800px; /* Wider history */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-}
-
-.chat-answer p {
-  margin: 0;
-  font-size: 16px;
-}
-
-.chat-answer p.answer-title {
-  font-weight: bold;
-  color: #4caf50; /* Vibrant green for titles */
-}
-
-/* Chat History */
+/* Chat History Container */
 .chat-history {
-  margin-top: 30px;
-  padding: 15px;
-  border: 1px solid #8dc891; /* Soft green border */
-  border-radius: 5px;
-  background-color: #f9fcf8; /* Very light green */
   width: 100%;
-  max-width: 800px; /* Wider history section */
+  max-width: 800px;
+  margin-top: 30px;
+  border: 1px solid #8dc891;
+  border-radius: 10px;
+  background-color: #f9fcf8;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
+  padding: 15px;
+  overflow-x: hidden;
+  /* Explicitly remove max-height */
+  max-height: none;
+  /* Explicitly reset any height */
+  height: auto;
 }
 
 .chat-history h3 {
-  margin-bottom: 15px;
+  margin: 0 0 15px 0;
 }
 
 .chat-history ul {
   list-style-type: none;
+  margin: 0;
   padding: 0;
 }
 
 .chat-history li {
   margin-bottom: 10px;
   padding: 15px;
-  border: 1px solid #8dc891; /* Soft green border */
+  border: none;
   border-radius: 5px;
-  background-color: #ffffff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  position: relative;
+  background-color: transparent;
+  box-shadow: none;
+    /* Force block to be sure we get stacking */
+  display: block;
+    /* Force width to container size */
+  width: 100%;
+  box-sizing: border-box;
+     /* Reset flexbox - just to be sure*/
+  flex: none;
 }
 
 .chat-history .response {
-  margin-bottom: 10px;
-  display: block;
-  font-size: 16px;
+    margin-bottom: 10px;
+    display: block; /* use block to ensure each response takes a full line */
+    font-size: 16px;
+    max-width: 100%;  /* ensure response does not overflow container*/
+    box-sizing: border-box;
+    word-break: break-word;
+    /* Force word-breaking for long strings without spaces*/
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
 }
 
-.chat-history button {
+/* Copy/Delete Buttons */
+.chat-history .message-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.chat-history .message-actions button {
   padding: 5px 10px;
-  margin: 5px;
   font-size: 14px;
-  background-color: #4caf50; /* Green buttons */
-  color: #fff;
   border: none;
   border-radius: 3px;
   cursor: pointer;
+  color: #fff;
+  flex: 0 0 auto;
+  max-width: max-content;
 }
 
-.chat-history button.copy-button {
-  background-color: #8bc34a; /* Lighter green for copy */
+.chat-history .message-actions .copy-btn {
+  background-color: #8bc34a;
 }
 
-.chat-history button.delete-button {
-  background-color: #e57373; /* Red for delete */
+.chat-history .message-actions .delete-btn {
+  background-color: #e57373;
 }
 
 .chat-history button:hover {
   opacity: 0.9;
+}
+
+/* Responsive: smaller screens */
+@media (max-width: 600px) {
+  .persona-button img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .chat-section {
+    padding: 15px;
+  }
+
+  .chat-history {
+    padding: 10px;
+  }
 }

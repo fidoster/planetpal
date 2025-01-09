@@ -1,219 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PlanetPal - Eco-friendly AI companion!</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+
+  <!-- Minimal inline style: only unique or high-level styles not in styles.css -->
   <style>
-  body {
-    background: linear-gradient(to bottom, #d4ecd4, #a8db9e); /* Light green gradient */
-    color: #333; /* Text color for contrast */
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
+    /* Keep the gradient background for body */
+    body {
+      background: linear-gradient(to bottom, #d4ecd4, #a8db9e);
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
 
-  .app-container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-  }
+    /* Keep container's max-width if you like, plus center alignment */
+    .app-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+      /* If you want to ensure centered content and vertical stacking, 
+         you can keep or remove the following. 
+         But remember your external CSS sets .app-container 
+         to display: flex; flex-direction: column; align-items: center; 
+         which is helpful in responsiveness. */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
 
-  header {
-  text-align: center;
-  padding: 20px;
-  background-color: transparent; /* Transparent background */
-  color: #333; /* Dark text for contrast */
-  border-radius: 10px;
-  box-shadow: none; /* Remove shadow */
-  }
+    /* Keep minimal header style */
+    header {
+      text-align: center;
+      padding: 20px;
+      background-color: transparent;
+      border-radius: 10px;
+      box-shadow: none;
+    }
 
+    .logo-container {
+      background-color: transparent;
+      padding: 0;
+      display: inline-block;
+      border: none;
+    }
 
-  .logo-container {
-    background-color: transparent; /* No background around logo */
-    padding: 0; /* Remove unnecessary padding */
-    display: inline-block; /* Wrap tightly around the logo */
-    border: none; /* No border */
-  }
+    .logo {
+      border: none;
+      box-shadow: none;
+      border-radius: 0;
+      max-width: 100%;
+      width: 250px; /* or any size you like */
+      height: auto;
+    }
 
-  .logo {
-    border: none; /* Remove any border */
-    box-shadow: none; /* No shadow around the logo */
-    border-radius: 0; /* Keep natural shape */
-    max-width: 100%; /* Ensure responsiveness */
-  }
-
-  .persona-selector button {
-    background-color: transparent; /* Remove background color */
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .persona-button img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%; /* Ensure circular icons */
-    transition: transform 0.2s, box-shadow 0.2s;
-    border: 2px solid transparent; /* No border around images */
-    box-shadow: none; /* Remove shadow around persona icons */
-  }
-
-  .persona-button img.selected {
-    transform: scale(1.1); /* Add slight zoom effect for selection */
-    box-shadow: 0px 4px 10px rgba(0, 0, 255, 0.5); /* Highlight selected persona */
-  }
-
-  #chat-container textarea {
-    background-color: #f0fff0; /* Soft green for input box */
-    border: 1px solid #d4ecd4; /* Light green border for subtle styling */
-    border-radius: 10px; /* Rounded edges for consistency */
-    padding: 10px;
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 1rem;
-  }
-
-  #chat-container button {
-    background-color: #4caf50; /* Green send button */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-  }
-
-  #chat-container button:hover {
-    background-color: #388e3c; /* Darker green on hover */
-    transform: scale(1.05); /* Slight zoom effect */
-  }
-
-  .chat-history {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #e8f5e9; /* Soft green background for chat history */
-    border-radius: 10px; /* Rounded edges for consistency */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  }
-
-  .chat-history li {
-    background-color: #f9fff9; /* Soft green for better readability */
-    border: 1px solid #d4ecd4; /* Subtle green border */
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 5px;
-  }
-
-  .slider-container {
-    margin-top: 10px;
-    text-align: center;
-  }
-
-  #level-slider {
-    width: 90%;
-    margin: 10px auto;
-  }
-
-  .slider-label {
-    margin-top: 5px;
-    font-size: 1rem;
-    font-weight: bold;
-  }
-</style>
-
+    /* Keep the simple slider container styling */
+    .slider-container {
+      margin-top: 10px;
+      text-align: center;
+    }
+    #level-slider {
+      width: 90%;
+      margin: 10px auto;
+    }
+    .slider-label {
+      margin-top: 5px;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+  </style>
 </head>
+
 <body>
   <div class="app-container">
     <header>
       <div class="logo-container">
-        <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Persona Chatbot Logo" class="logo">
+        <img
+          src="{{ url_for('static', filename='assets/logo.png') }}"
+          alt="Persona Chatbot Logo"
+          class="logo"
+        />
       </div>
       <p>Select a persona, adjust their cleverness level, and ask your question!</p>
     </header>
+
+    <!-- Persona Selector (relies on .persona-button from styles.css) -->
     <div id="persona-selector" class="persona-selector">
-      <!-- Advisor Persona -->
+      <!-- Advisor -->
       <button class="persona-button" id="advisor" onclick="selectPersona('Advisor')">
-        <img src="{{ url_for('static', filename='assets/personas/Advisor.png') }}" alt="Advisor">
+        <img src="{{ url_for('static', filename='assets/personas/Advisor.png') }}" alt="Advisor" />
         <p>Advisor</p>
       </button>
 
-      <!-- Recycler Persona -->
+      <!-- Recycler -->
       <button class="persona-button" id="recycler" onclick="selectPersona('Recycler')">
-        <img src="{{ url_for('static', filename='assets/personas/Recycler.png') }}" alt="Recycler">
+        <img src="{{ url_for('static', filename='assets/personas/Recycler.png') }}" alt="Recycler" />
         <p>Recycler</p>
       </button>
 
-      <!-- Innovator Persona -->
+      <!-- Innovator -->
       <button class="persona-button" id="innovator" onclick="selectPersona('Innovator')">
-        <img src="{{ url_for('static', filename='assets/personas/Innovator.png') }}" alt="Innovator">
+        <img src="{{ url_for('static', filename='assets/personas/Innovator.png') }}" alt="Innovator" />
         <p>Innovator</p>
       </button>
 
-      <!-- Mentor Persona -->
+      <!-- Mentor -->
       <button class="persona-button" id="mentor" onclick="selectPersona('Mentor')">
-        <img src="{{ url_for('static', filename='assets/personas/Mentor.png') }}" alt="Mentor">
+        <img src="{{ url_for('static', filename='assets/personas/Mentor.png') }}" alt="Mentor" />
         <p>Mentor</p>
       </button>
 
-      <!-- Planner Persona -->
+      <!-- Planner -->
       <button class="persona-button" id="planner" onclick="selectPersona('Planner')">
-        <img src="{{ url_for('static', filename='assets/personas/Planner.png') }}" alt="Planner">
+        <img src="{{ url_for('static', filename='assets/personas/Planner.png') }}" alt="Planner" />
         <p>Planner</p>
       </button>
 
-      <!-- Conservationist Persona -->
+      <!-- Conservationist -->
       <button class="persona-button" id="conservationist" onclick="selectPersona('Conservationist')">
-        <img src="{{ url_for('static', filename='assets/personas/Conservationist.png') }}" alt="Conservationist">
+        <img src="{{ url_for('static', filename='assets/personas/Conservationist.png') }}" alt="Conservationist" />
         <p>Conservationist</p>
       </button>
 
-      <!-- Analyst Persona -->
+      <!-- Analyst -->
       <button class="persona-button" id="analyst" onclick="selectPersona('Analyst')">
-        <img src="{{ url_for('static', filename='assets/personas/Analyst.png') }}" alt="Analyst">
+        <img src="{{ url_for('static', filename='assets/personas/Analyst.png') }}" alt="Analyst" />
         <p>Analyst</p>
       </button>
 
-      <!-- Advocate Persona -->
+      <!-- Advocate -->
       <button class="persona-button" id="advocate" onclick="selectPersona('Advocate')">
-        <img src="{{ url_for('static', filename='assets/personas/Advocate.png') }}" alt="Advocate">
+        <img src="{{ url_for('static', filename='assets/personas/Advocate.png') }}" alt="Advocate" />
         <p>Advocate</p>
       </button>
 
-      <!-- Motivator Persona -->
+      <!-- Motivator -->
       <button class="persona-button" id="motivator" onclick="selectPersona('Motivator')">
-        <img src="{{ url_for('static', filename='assets/personas/Motivator.png') }}" alt="Motivator">
+        <img src="{{ url_for('static', filename='assets/personas/Motivator.png') }}" alt="Motivator" />
         <p>Motivator</p>
       </button>
 
-      <!-- Strategist Persona -->
+      <!-- Strategist -->
       <button class="persona-button" id="strategist" onclick="selectPersona('Strategist')">
-        <img src="{{ url_for('static', filename='assets/personas/Strategist.png') }}" alt="Strategist">
+        <img src="{{ url_for('static', filename='assets/personas/Strategist.png') }}" alt="Strategist" />
         <p>Strategist</p>
       </button>
     </div>
 
+    <!-- Slider Container -->
     <div class="slider-container">
-      <label for="level-slider" class="slider-label">Cleverness Level: <span id="slider-value">3</span></label>
-      <input type="range" id="level-slider" min="1" max="5" value="3">
+      <label for="level-slider" class="slider-label"
+        >Cleverness Level:
+        <span id="slider-value">3</span>
+      </label>
+      <input type="range" id="level-slider" min="1" max="5" value="3" />
     </div>
 
+    <!-- Chat Section -->
     <div id="chat-container" class="chat-section">
       <textarea id="question-input" placeholder="Prompt Expert is ready to assist..."></textarea>
       <button id="send-button" class="send-button">Send</button>
     </div>
 
+    <!-- Chat History (styles handled by .chat-history in styles.css) -->
     <div id="chat-history" class="chat-history">
       <h3>Chat History</h3>
       <ul id="history-list"></ul>
     </div>
   </div>
 
+  <!-- Script -->
   <script>
-    let selectedPersona = 'Prompt Expert';
+    let selectedPersona = 'Advisor';
     let clevernessLevel = 3;
 
     function selectPersona(persona) {
@@ -222,8 +187,11 @@
       questionInput.placeholder = `${persona} is ready to assist...`;
 
       const buttons = document.querySelectorAll('.persona-button img');
-      buttons.forEach(img => img.classList.remove('selected'));
-      document.querySelector(`#${persona.toLowerCase().replace(/ /g, '-')}`).querySelector('img').classList.add('selected');
+      buttons.forEach((img) => img.classList.remove('selected'));
+      document
+        .querySelector(`#${persona.toLowerCase().replace(/ /g, '-')}`)
+        .querySelector('img')
+        .classList.add('selected');
     }
 
     const slider = document.getElementById('level-slider');
@@ -236,7 +204,9 @@
     document.getElementById('send-button').addEventListener('click', async () => {
       const questionInput = document.getElementById('question-input');
       const question = questionInput.value.trim();
-      if (!question) return alert('Please enter a question.');
+      if (!question) {
+        return alert('Please enter a question.');
+      }
 
       try {
         const response = await fetch('/ask', {
@@ -245,9 +215,10 @@
           body: JSON.stringify({
             question,
             persona: selectedPersona,
-            level: clevernessLevel
-          })
+            level: clevernessLevel,
+          }),
         });
+
         const data = await response.json();
         if (data.error) throw new Error(data.error);
 
