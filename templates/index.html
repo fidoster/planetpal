@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PlanetPal - Eco-friendly AI companion!</title>
+  <title>GreenBot - Eco-friendly AI companion!</title>
 
   <!-- External CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
@@ -66,7 +66,7 @@
 
 <body>
   <div class="app-container">
-      <header>
+    <header>
       <div class="logo-container">
         <img
           src="{{ url_for('static', filename='assets/logo.png') }}"
@@ -74,89 +74,69 @@
           class="logo"
         />
       </div>
-        <h1 class="planetpal-title">PlanetPal</h1>
-        <p class="planetpal-tagline">Your Eco-friendly AI companion</p>
-      <p class="header-text">Select a persona, adjust their cleverness level, and ask your question!</p>
-      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <h1 class="planetpal-title">GreenBot</h1>
+      <p class="planetpal-tagline">Your Eco-friendly AI companion</p>
+      <p class="header-text">Select your advisor and get tailored advice</p>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Fredoka+One&family=Lato&family=Lora&family=Montserrat&family=Nunito&family=Open+Sans&family=Pacifico&family=Playfair+Display&family=Raleway&family=Roboto+Slab&display=swap" rel="stylesheet">
     </header>
-
+    <div class="content-container">
     <!-- Persona Selector (relies on .persona-button from styles.css) -->
-    <div id="persona-selector" class="persona-selector">
-      <!-- Advisor -->
-      <button class="persona-button" id="advisor" onclick="selectPersona('Advisor')">
-        <img src="{{ url_for('static', filename='assets/personas/Advisor.png') }}" alt="Advisor" />
-        <p>Advisor</p>
-      </button>
+      <div id="persona-selector" class="persona-selector">
+         <!-- Advisor -->
+        <button class="persona-button" id="advisor" onclick="selectPersona('Advisor')"  title="Sustainability Advisor">
+          <img src="{{ url_for('static', filename='assets/personas/Advisor.png') }}" alt="Sustainability Advisor" />
+          <p>Advisor</p>
+        </button>
 
-      <!-- Recycler -->
-      <button class="persona-button" id="recycler" onclick="selectPersona('Recycler')">
-        <img src="{{ url_for('static', filename='assets/personas/Recycler.png') }}" alt="Recycler" />
-        <p>Recycler</p>
-      </button>
+         <!-- Green Loan Expert -->
+        <button class="persona-button" id="green" onclick="selectPersona('Green')" title="Green Loan Expert">
+          <img src="{{ url_for('static', filename='assets/personas/Green.png') }}" alt="Green Loan Expert" />
+          <p>Green</p>
+        </button>
 
-      <!-- Innovator -->
-      <button class="persona-button" id="innovator" onclick="selectPersona('Innovator')">
-        <img src="{{ url_for('static', filename='assets/personas/Innovator.png') }}" alt="Innovator" />
-        <p>Innovator</p>
-      </button>
-
-      <!-- Mentor -->
-      <button class="persona-button" id="mentor" onclick="selectPersona('Mentor')">
-        <img src="{{ url_for('static', filename='assets/personas/Mentor.png') }}" alt="Mentor" />
-        <p>Mentor</p>
-      </button>
-
-      <!-- Planner -->
-      <button class="persona-button" id="planner" onclick="selectPersona('Planner')">
-        <img src="{{ url_for('static', filename='assets/personas/Planner.png') }}" alt="Planner" />
-        <p>Planner</p>
-      </button>
-
-      <!-- Conservationist -->
-      <button class="persona-button" id="conservationist" onclick="selectPersona('Conservationist')">
-        <img src="{{ url_for('static', filename='assets/personas/Conservationist.png') }}" alt="Conservationist" />
-        <p>Conservationist</p>
-      </button>
-
-      <!-- Analyst -->
-      <button class="persona-button" id="analyst" onclick="selectPersona('Analyst')">
-        <img src="{{ url_for('static', filename='assets/personas/Analyst.png') }}" alt="Analyst" />
-        <p>Analyst</p>
-      </button>
-
-      <!-- Advocate -->
-      <button class="persona-button" id="advocate" onclick="selectPersona('Advocate')">
-        <img src="{{ url_for('static', filename='assets/personas/Advocate.png') }}" alt="Advocate" />
-        <p>Advocate</p>
-      </button>
-
-      <!-- Motivator -->
-      <button class="persona-button" id="motivator" onclick="selectPersona('Motivator')">
-        <img src="{{ url_for('static', filename='assets/personas/Motivator.png') }}" alt="Motivator" />
-        <p>Motivator</p>
-      </button>
-
-      <!-- Strategist -->
-      <button class="persona-button" id="strategist" onclick="selectPersona('Strategist')">
-        <img src="{{ url_for('static', filename='assets/personas/Strategist.png') }}" alt="Strategist" />
-        <p>Strategist</p>
-      </button>
+        <!-- EIF Guarantee Expert -->
+        <button class="persona-button" id="eif" onclick="selectPersona('EIF')" title="EIF Guarantee Expert">
+          <img src="{{ url_for('static', filename='assets/personas/EIF.png') }}" alt="EIF Guarantee Expert" />
+           <p>EIF</p>
+        </button>
+         <!-- Sustainability Planning Expert -->
+           <button class="persona-button" id="sustainability" onclick="selectPersona('Sustainability')" title="Sustainability Planning Expert">
+             <img src="{{ url_for('static', filename='assets/personas/Sustainability.png') }}" alt="Sustainability Planning Expert" />
+            <p>Sustainability</p>
+           </button>
+          <!-- Education -->
+        <button class="persona-button" id="educator" onclick="selectPersona('Educator')" title="Green Educator">
+            <img src="{{ url_for('static', filename='assets/personas/Educator.png') }}" alt="Green Educator" />
+            <p>Educator</p>
+        </button>
+      </div>
+        <!-- Slider Container -->
+      <div class="slider-container">
+          <label for="level-slider" class="slider-label"
+            >Explanation Detail:
+              <span id="level-1-label" style="float:left; font-size: 0.7rem;">Easy</span>
+                <span id="slider-value">3</span>
+              <span id="level-5-label" style="float:right; font-size: 0.7rem;">Complex</span>
+          </label>
+          <input type="range" id="level-slider" min="1" max="5" value="3" />
+      </div>
+              <div class="professional-selector-container">
+            <label for="profession-dropdown" class="dropdown-label">Profession: </label>
+             <select id="profession-dropdown"  onchange="selectProfessionalPersona(this.value)">
+                    <option value="SME Owner">SME Owner</option>
+                    <option value="Housing Company Representative">Housing</option>
+                    <option value="Private Trader">P.Trader</option>
+                     <option value="Tech Averse Customer">Tech Averse</option>
+                     <option value="Other">Other</option>
+                </select>
+          
+      </div>
     </div>
-
-    <!-- Slider Container -->
-    <div class="slider-container">
-      <label for="level-slider" class="slider-label"
-        >Cleverness Level:
-        <span id="slider-value">3</span>
-      </label>
-      <input type="range" id="level-slider" min="1" max="5" value="3" />
-    </div>
-
      <!-- Chat Section -->
     <div id="chat-container" class="chat-section">
-      <textarea id="question-input" placeholder="Prompt Expert is ready to assist..."></textarea>
+      <textarea id="question-input" placeholder="GreenBot is ready to assist..."></textarea>
       <button id="send-button" class="send-button">Send</button>
     </div>
 
@@ -170,6 +150,7 @@
   <!-- Script -->
   <script>
     let selectedPersona = 'Advisor';
+    let selectedProfessionalPersona = "SME Owner"
     let clevernessLevel = 3;
 
     function selectPersona(persona) {
@@ -177,20 +158,31 @@
       const questionInput = document.getElementById('question-input');
       questionInput.placeholder = `${persona} is ready to assist...`;
 
-      const buttons = document.querySelectorAll('.persona-button img');
-      buttons.forEach((img) => img.classList.remove('selected'));
+      const buttons = document.querySelectorAll('.persona-button');
+      buttons.forEach((button) => button.classList.remove('selected'));
       document
         .querySelector(`#${persona.toLowerCase().replace(/ /g, '-')}`)
-        .querySelector('img')
         .classList.add('selected');
     }
+        function selectProfessionalPersona(persona) {
+      selectedProfessionalPersona = persona;
+            const questionInput = document.getElementById('question-input');
+           questionInput.placeholder = `${selectedPersona} is ready to assist...`;
 
+      const buttons = document.querySelectorAll('.professional-persona-button');
+      buttons.forEach((button) => button.classList.remove('selected'));
+      document
+        .querySelector(`#${persona.toLowerCase().replace(/ /g, '-')}`)
+        .classList.add('selected');
+    }
     const slider = document.getElementById('level-slider');
     const sliderValue = document.getElementById('slider-value');
     slider.addEventListener('input', function () {
       clevernessLevel = parseInt(slider.value, 10);
       sliderValue.textContent = clevernessLevel;
     });
+
+
 
     document.getElementById('send-button').addEventListener('click', async () => {
       const questionInput = document.getElementById('question-input');
@@ -207,6 +199,7 @@
             question,
             persona: selectedPersona,
             level: clevernessLevel,
+            professionalPersona: selectedProfessionalPersona,
           }),
         });
 
@@ -216,8 +209,8 @@
         const historyList = document.getElementById('history-list');
         const listItem = document.createElement('li');
         listItem.innerHTML = `
-          <p><strong>${selectedPersona}:</strong> ${question}</p>
-          <pre class="response">${data.answer}</pre>
+          <p><strong>User:</strong> ${question}</p>
+          <pre class="response"><strong>Expert:</strong> ${data.answer}</pre>
           <div class="message-actions">
             <button class="copy-btn" onclick="copyMessage(this)">Copy</button>
             <button class="delete-btn" onclick="deleteMessage(this)">Delete</button>

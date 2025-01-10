@@ -7,7 +7,7 @@
 
 body {
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Nunito', sans-serif;
     background-color: #eaf4e3;
     color: #2f4f2f;
     line-height: 1.6;
@@ -50,91 +50,106 @@ header {
     margin: 0 auto;
     text-align: center;
     margin-top: 50px;
-    font-size: 1.2rem; /* Current font size */
-    font-family: 'Lora', serif; /* Current font */
+    font-size: 1.2rem;
+    font-family: 'Lora', serif;
 }
 /* New styles for planetpal and tagline  */
 .planetpal-title {
     font-family: 'Nunito', sans-serif;
     font-size: 2.8rem;
-    color: #1e321e;   /* Default text color kept for fallback */
-    margin: 0 auto;
+    color: #286e66;
+     margin: 0 auto;
     text-align: center;
     margin-top: -5px;
     margin-left: 5px;
     letter-spacing: 2px;
-    background: linear-gradient(to right, #2f4f2f, #003300); /* Darker green gradient */
+    background: linear-gradient(to right, #2f4f2f, #003300);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     text-fill-color: transparent;
 }
 .planetpal-tagline{
-    font-family: 'Libre Baskerville', serif; /* Use Libre Baskerville for a high-quality feel */
-    font-style: italic; /* Make the text italic */
-    font-size: 1.15rem; /* Adjust size */
+  font-style: italic;
+    font-size: 1.15rem;
     color: #3a633a;
     margin: 0 auto;
     text-align: center;
     letter-spacing: 0.5px;
-    margin-top: 0px;
+        margin-top: 5px;
+            font-family: 'Libre Baskerville', serif;
 }
+
+/* Main container of the side by side elements */
+.content-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+     margin-bottom: 20px;
+}
+
 /* Persona Selector */
 .persona-selector {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+   margin-bottom: 10px;
+    flex: 0 0 auto;
 }
 
 .persona-button {
-  background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 0;
-  margin: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+     transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 
 .persona-button:focus,
 .persona-button:active {
-  outline: none;
-  box-shadow: none;
-  background-color: transparent;
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
 }
 
 .persona-button img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: 2px solid transparent;
-  box-shadow: none;
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    box-shadow: none;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 
-.persona-button img:hover {
-  border: 3px solid #4caf50;
-  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.5);
-  transform: scale(1.1);
+.persona-button:hover img{
+    border: 3px solid #4caf50;
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.5);
+    transform: scale(1.1);
 }
 
-.persona-button img.selected {
-  border: 3px solid #4caf50;
-  box-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
-  transform: scale(1.1);
+.persona-button.selected img {
+    border: 3px solid #4caf50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
+    transform: scale(1.1);
 }
+
 
 /* Chat Section (Text Box + Send Button) */
 .chat-section {
-  width: 100%;
-  max-width: 800px;
-  padding: 20px;
-  border: 1px solid #8dc891;
-  border-radius: 10px;
-  background-color: #ffffff;
-    margin-top: 20px; /* add the distance here */
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    border: 1px solid #8dc891;
+    border-radius: 10px;
+    background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
 }
 
 .chat-section textarea {
@@ -176,19 +191,20 @@ button.send-button:focus {
 
 /* Chat History Container */
 .chat-history {
-  width: 100%;
-  max-width: 800px;
-  margin-top: 30px;
-  border: 1px solid #8dc891;
-  border-radius: 10px;
-  background-color: #f9fcf8;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  overflow-x: hidden;
-  /* Explicitly remove max-height */
-  max-height: none;
-  /* Explicitly reset any height */
-  height: auto;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 30px;
+    border: 1px solid #8dc891;
+    border-radius: 10px;
+    background-color: #f9fcf8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    overflow-x: hidden;
+    /* Explicitly remove max-height */
+    max-height: none;
+    /* Explicitly reset any height */
+    height: auto;
+    font-size: 1rem;
 }
 
 .chat-history h3 {
@@ -202,26 +218,26 @@ button.send-button:focus {
 }
 
 .chat-history li {
-  margin-bottom: 10px;
-  padding: 15px;
-  border: none;
-  border-radius: 5px;
-  background-color: transparent;
-  box-shadow: none;
+    margin-bottom: 10px;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    box-shadow: none;
     /* Force block to be sure we get stacking */
-  display: block;
+    display: block;
     /* Force width to container size */
-  width: 100%;
-  box-sizing: border-box;
-     /* Reset flexbox - just to be sure*/
-  flex: none;
+    width: 100%;
+    box-sizing: border-box;
+    /* Reset flexbox - just to be sure*/
+    flex: none;
 }
 
 .chat-history .response {
     margin-bottom: 10px;
-    display: block; /* use block to ensure each response takes a full line */
+    display: block;
     font-size: 16px;
-    max-width: 100%;  /* ensure response does not overflow container*/
+    max-width: 100%;
     box-sizing: border-box;
     word-break: break-word;
     /* Force word-breaking for long strings without spaces*/
@@ -231,78 +247,78 @@ button.send-button:focus {
 
 /* Copy/Delete Buttons */
 .chat-history .message-actions {
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
 }
 
 .chat-history .message-actions button {
-  padding: 5px 10px;
-  font-size: 14px;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  color: #fff;
-  flex: 0 0 auto;
-  max-width: max-content;
+    padding: 5px 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #fff;
+    flex: 0 0 auto;
+    max-width: max-content;
 }
 
 .chat-history .message-actions .copy-btn {
-  background-color: #8bc34a;
+    background-color: #8bc34a;
 }
 
 .chat-history .message-actions .delete-btn {
-  background-color: #e57373;
+    background-color: #e57373;
 }
 
 .chat-history button:hover {
-  opacity: 0.9;
+    opacity: 0.9;
 }
 
 /* Change range slider track color */
 #level-slider {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 90%;
-  height: 12px;
-    margin: 20px auto;
-    background: linear-gradient(to left, #4caf50, #ddd); /*Reversed gradient*/
+    -webkit-appearance: none;
+    appearance: none;
+    width: 150%;
+    height: 20px;
+    background: linear-gradient(to left, #4caf50, #ddd);
     outline: none;
     border: 1px solid #8dc891;
     border-radius: 15px;
     transition: background 0.2s;
+     flex: 0 0 40%;
+       margin: 20px auto 10px auto;
 }
 
 #level-slider:focus {
-        background: linear-gradient(to left, #4caf50, #ddd); /*Reversed gradient*/
+       background: linear-gradient(to left, #4caf50, #ddd);
 }
 
 #level-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  background: #4caf50; /* Green thumb */
-  cursor: pointer;
-  border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #4caf50;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-
 #level-slider::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
-  background: #4caf50; /* Green thumb */
-  cursor: pointer;
-  border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 20px;
+    height: 20px;
+    background: #4caf50;
+    cursor: pointer;
+    border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 #level-slider::-webkit-slider-runnable-track {
     background: transparent;
     border-radius: 15px;
 }
 #level-slider::-moz-range-track {
-    background: transparent;
+      background: transparent;
     border-radius: 15px;
 }
 
@@ -311,30 +327,171 @@ button.send-button:focus {
   border-color: transparent;
   color: transparent;
 }
-
 #level-slider::-ms-thumb {
     width: 20px;
     height: 20px;
     background: #4caf50;
     cursor: pointer;
     border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 #level-slider::-ms-fill-lower {
-        background: linear-gradient(to left, #4caf50, #ddd);  /*Green background on left*/
-    border-radius: 15px;
+      background: linear-gradient(to left, #4caf50, #ddd);
+   border-radius: 15px;
 }
 #level-slider::-ms-fill-upper {
+      background: transparent;
+     border-radius: 15px;
+}
+
+/* New professional persona selector  */
+.professional-selector-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+        margin-bottom: 30px;
+    flex: 0 0 auto;
+}
+
+.professional-persona-selector {
+   display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+      margin-bottom: 15px;
+}
+.professional-persona-button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+      font-size: 0.9rem;
+      flex: 0 0 auto;
+}
+
+.professional-persona-button:focus,
+.professional-persona-button:active {
+  outline: none;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.professional-persona-button img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    box-shadow: none;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+     display:none;
+}
+
+.professional-persona-button:hover {
+    border: 3px solid #4caf50;
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.5);
+    transform: scale(1.1);
+}
+
+.professional-persona-button.selected {
+     border: 3px solid #4caf50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
+    transform: scale(1.1);
+}
+
+#profession-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 90%;
+    height: 12px;
+        background: linear-gradient(to right, #a8db9e, #ddd);
+    outline: none;
+    border: 1px solid #8dc891;
+    border-radius: 15px;
+    flex: 0 0 40%;
+        margin: 20px auto 10px auto;
+
+}
+#profession-slider:focus {
+     background: linear-gradient(to right, #a8db9e, #ddd);
+}
+
+#profession-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #4caf50;
+    cursor: pointer;
+    border-radius: 50%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#profession-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+     background: #4caf50;
+    cursor: pointer;
+    border-radius: 50%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+#profession-slider::-webkit-slider-runnable-track {
     background: transparent;
     border-radius: 15px;
 }
+#profession-slider::-moz-range-track {
+    background: transparent;
+    border-radius: 15px;
+}
+#profession-slider::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+#profession-slider::-ms-thumb {
+    width: 20px;
+    height: 20px;
+    background: #4caf50;
+    cursor: pointer;
+    border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+#profession-slider::-ms-fill-lower {
+     background: linear-gradient(to right, #a8db9e, #ddd);
+     border-radius: 15px;
+}
+.dropdown-label{
+    margin-top: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+}
 
+#profession-dropdown {
+  width: 35%;
+  padding: 10px; /* increased padding for more space */
+  font-size: 1.1rem; /* increased font size */
+    border: 1px solid #8dc891;
+     border-radius: 5px;
+      background-color: #f2f7f1;
+        margin: 0 auto;
+      margin-top: 5px;
+      margin-bottom: 10px;
+}
+#profession-dropdown:focus {
+  outline: 2px solid #4caf50;
+}
 
 /* Responsive: smaller screens */
 @media (max-width: 600px) {
   .persona-button img {
     width: 60px;
     height: 60px;
+  }
+   .professional-persona-button img {
+    width: 40px;
+    height: 40px;
   }
 
   .chat-section {
