@@ -76,8 +76,8 @@ header {
     margin: 0 auto;
     text-align: center;
     letter-spacing: 0.5px;
-        margin-top: 5px;
-            font-family: 'Libre Baskerville', serif;
+    margin-top: 5px;
+    font-family: 'Libre Baskerville', serif;
 }
 
 /* Main container of the side by side elements */
@@ -224,12 +224,9 @@ button.send-button:focus {
     border-radius: 5px;
     background-color: transparent;
     box-shadow: none;
-    /* Force block to be sure we get stacking */
     display: block;
-    /* Force width to container size */
     width: 100%;
     box-sizing: border-box;
-    /* Reset flexbox - just to be sure*/
     flex: none;
 }
 
@@ -466,6 +463,8 @@ button.send-button:focus {
     margin-top: 5px;
     font-size: 1rem;
     font-weight: bold;
+    font-family: 'Lora', sans-serif;
+    font-size: 1.2rem
 }
 
 #profession-dropdown {
