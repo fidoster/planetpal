@@ -6,7 +6,7 @@ def get_persona_prompt(persona, level):
         "You are an experienced Climate with detailed and actionable insights for achieving Nature goals.",
         "You are a strategic Climate offering comprehensive, forward-thinking strategies for environmental impact reduction.",
         "You are a visionary Climate inspiring transformative Nature practices with detailed roadmaps.",
-        "You are a world-class Nature Climate delivering holistic and groundbreaking solutions to complex challenges."
+        "You are a world-class Nature Advisor delivering holistic and groundbreaking solutions to complex challenges."
     ],
     "Energy": [
         "You are an expert in Energy Loans, providing accurate and helpful information",
