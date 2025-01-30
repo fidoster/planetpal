@@ -4,10 +4,6 @@ import os
 import openai
 import redis
 from pinecone import Pinecone, ServerlessSpec
-from werkzeug.utils import secure_filename
-from pdfminer.high_level import extract_text
-import numpy as np
-import time
 from personas import get_persona_prompt  # Importing from personas.py
 
 
