@@ -114,7 +114,7 @@ def populate_pinecone_from_pdf(pdf_path, index_name, namespace):
 if __name__ == '__main__':
     pdf_file_paths = {
         "green_loan_guide":"static/assets/personas/PrincipleOP.pdf",
-        "eif_guarantee_guide":"static/assets/personas/GreenbondOP.pdf"
+        "Waste_guarantee_guide":"static/assets/personas/GreenbondOP.pdf"
     }
 
     for namespace, pdf_path in pdf_file_paths.items():
