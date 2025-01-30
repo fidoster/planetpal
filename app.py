@@ -145,7 +145,7 @@ def ask_question():
             return jsonify({"error": "No JSON payload provided."}), 400
 
         question = data.get("question")
-        persona = data.get("persona", "Advisor")
+        persona = data.get("persona", "Climate")
         level = data.get("level", 1)
         selected_pdf = data.get("selected_pdf", None)  # Optional selected PDF for context
         session_id = data.get("session_id", "default")
