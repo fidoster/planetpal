@@ -152,7 +152,7 @@
     function selectPersona(persona) {
       selectedPersona = persona;
       const questionInput = document.getElementById('question-input');
-      questionInput.placeholder = `${persona} is ready to assist...`;
+      questionInput.placeholder = `${persona} Advisor is ready to assist...`;
 
       const buttons = document.querySelectorAll('.persona-button');
       buttons.forEach((button) => button.classList.remove('selected'));
@@ -163,7 +163,7 @@
         function selectProfessionalPersona(persona) {
       selectedProfessionalPersona = persona;
             const questionInput = document.getElementById('question-input');
-           questionInput.placeholder = `${selectedPersona} is ready to assist...`;
+           questionInput.placeholder = `${selectedPersona} Advisor is ready to assist...`;
 
       const buttons = document.querySelectorAll('.professional-persona-button');
       buttons.forEach((button) => button.classList.remove('selected'));
